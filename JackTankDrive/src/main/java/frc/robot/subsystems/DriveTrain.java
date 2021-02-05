@@ -18,7 +18,7 @@ public class DriveTrain extends SubsystemBase {
 
   public DriveTrain() {
     talonLeft = new TalonSRX(Constants.MOTOR_PORTS_LEFT[0]);
-    talonRight - new TalonSRX(Constants.MOTOR_PORTS_RIGHT[0]);
+    talonRight = new TalonSRX(Constants.MOTOR_PORTS_RIGHT[0]);
 
     talonLeft.configFactoryDefault();
     talonRight.configFactoryDefault();
@@ -73,7 +73,7 @@ public class DriveTrain extends SubsystemBase {
   }
   
   public double getDistance() {
-    return (getRightDistance()  getLeftDistance()) * 0.5;
+    return (getRightDistance() + getLeftDistance()) * 0.5;
   }
   
   public double getleftVelocity() {
