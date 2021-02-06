@@ -6,7 +6,6 @@ package frc.robot.subsystems;
 
 import java.util.ResourceBundle.Control;
 
-import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import jdk.vm.ci.meta.Constant;
@@ -43,7 +42,7 @@ public class DriveTrain extends SubsystemBase {
       victorsLeft[i-1].setInverted(Constants.LEFT_INVERTED);
     }
 
-    victorsRight = new VictorSPX[Constants,MOTOR_PORTS_RIGHT.length - 1];
+    victorsRight = new VictorSPX[Constants.MOTOR_PORTS_RIGHT.length - 1];
     for (int i = 1; i < Constants.MOTOR_PORTS_RIGHT.length; i++) {
       victorsRight[i-1] = new VictorSPX(Constants.MOTOR_PORTS_RIGHT[i]);
       victorsRight[i-1].configFactoryDefault();
@@ -51,15 +50,17 @@ public class DriveTrain extends SubsystemBase {
       victorsRight[i-1].setInverted(!Constants.RIGHT_INVERTED);
     }
 
-    public void setLeftMotors(double speed){
-      talonLeft.set(ControlMode.PercentOutput, speed);
-    }
+  }
 
-    public void setRightMotors(double speed){
+  public void setLeftMotors(double speed) {
+    talonLeft.set(ControlMode.PercentOutput, speed);
+  }
+
+    public void setRightMotors(double speed) {
       talonRight.set(ControlMode.PercentOutput, speed);
     }
 
-    public void setBothMotors(double speed){
+    public void setBothMotors(double speed) {
       setLeftMotors(speed);
       setRightMotors(speed);
     }
@@ -78,14 +79,14 @@ public class DriveTrain extends SubsystemBase {
     }
 
     public double getDistance() {
-      return (getLeftDistance(): getRightDistance())//hwat
+      return (getLeftDistance() + getRightDistance()) / 2; //hwat
     }
 
-    public double getLeftDistance() {
+    public double getLeftSpeed() {
       return talonLeft.getSelectedSensorPostion() *distancePerPulse *Constants.VELOCITY_CALCULATIONS_PER_SECOND /12;
     }
 
-  public double getRightDistance() {
+  public double getRightSpeed() {
     return talonRight.getSelectedSensorPostion() *distancePerPulse *Constants.VELOCITY_CALCULATIONS_PER_SECOND /12;
    }
 
@@ -93,7 +94,7 @@ public class DriveTrain extends SubsystemBase {
      return (getLeftDistance() + getRightDistance()) * 0.5;
    } 
 
-  }
+  
 
   @Override
   public void periodic() {
