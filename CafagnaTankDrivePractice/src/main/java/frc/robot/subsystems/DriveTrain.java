@@ -4,7 +4,11 @@
  
 package frc.robot.subsystems;
  
-import edu.wpi.first.wpilibj.Talon;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
  
@@ -12,8 +16,8 @@ public class DriveTrain extends SubsystemBase {
   private TalonSRX talonLeft, talonRight;
   private VictorSPX[] victorsLeft, victorsRight;
   
-  private int leftOffset = 0;
-  private int rightOffset = 0;
+  private double leftOffset = 0;
+  private double rightOffset = 0;
  
   private final double distancePerPulse = Math.PI * Constants.ENCODER_GEAR_RATIO / Constants.ENCODER_PULSES_PER_REVOLATION;
   public DriveTrain() {
@@ -24,13 +28,14 @@ public class DriveTrain extends SubsystemBase {
     talonRight.configFactoryDefault();
  
     talonLeft.setInverted(Constants.LEFT_INVERTED);
-    talonRight.setInverted(Constants.LEFT_INVERTED);
+    talonRight.setInverted(Constants.RIGHT_INVERTED);
+    
  
     talonLeft.configOpenloopRamp(Constants.RAMP_RATE);
     talonRight.configOpenloopRamp(Constants.RAMP_RATE);
  
     victorsLeft = new VictorSPX[Constants.MOTOR_PORTS_LEFT.length - 1];
-    for (int i = 1; i < Constants.MOTOR_PORTS_LEFT.length; i++); {
+    for (int i = 1; i < Constants.MOTOR_PORTS_LEFT.length; i++) {
       victorsLeft[i-1] = new VictorSPX(Constants.MOTOR_PORTS_LEFT[i]);
       victorsLeft[i-1].configFactoryDefault();
       victorsLeft[i-1].follow(talonLeft);
@@ -38,11 +43,11 @@ public class DriveTrain extends SubsystemBase {
     }
  
     victorsRight = new VictorSPX[Constants.MOTOR_PORTS_RIGHT.length - 1];
-    for (int i = 1; i < Constants.MOTOR_PORTS_RIGHT.length; i++); {
+    for (int i = 1; i < Constants.MOTOR_PORTS_RIGHT.length; i++) {
       victorsRight[i-1] = new VictorSPX(Constants.MOTOR_PORTS_RIGHT[i]);
       victorsRight[i-1].configFactoryDefault();
       victorsRight[i-1].follow(talonRight);
-      victorsRight[i-1].setInverted(Constants.LEFT_INVERTED);
+      victorsRight[i-1].setInverted(Constants.RIGHT_INVERTED);
     }
   }
   

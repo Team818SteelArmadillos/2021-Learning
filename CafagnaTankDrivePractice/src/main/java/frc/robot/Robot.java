@@ -20,7 +20,7 @@ import frc.robot.subsystems.OI;
  */
 public class Robot extends TimedRobot {
   public static DriveTrain driveTrain = new DriveTrain();
-  public static OI m_oi; 
+  public static OI m_oi = new OI();
   
  
   private RobotContainer m_robotContainer;
