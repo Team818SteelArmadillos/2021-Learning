@@ -6,9 +6,12 @@ package frc.robot;
  
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.command.TimedCommand;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.commands.DistanceDrive;
+import frc.robot.commands.TimeDrive;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.OI;
  
@@ -71,6 +74,20 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Velocity (ft.s)", driveTrain.getVelocity());
     SmartDashboard.putNumber("Distance Traveled (in)", driveTrain.getVelocity());
   }
+
+  @Override
+  public void autonomousInit() {
+    DistanceDrive autonCommand = new DistanceDrive();
+
+    // schedule the autonomous command (example)
+    if (autonCommand != null) {
+      autonCommand.schedule();
+    }
+  }
+
+  /** This function is called periodically during autonomous. */
+  @Override
+  public void autonomousPeriodic() {}
  
   @Override
   public void testInit() {

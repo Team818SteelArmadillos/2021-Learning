@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends TimedRobot {
   public static DriveTrain driveTrain = new DriveTrain();
-  public static OI m_oi; 
+  public static OI m_oi = new OI(); 
 
   @Override
   public void robotInit() {

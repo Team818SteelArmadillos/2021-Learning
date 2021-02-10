@@ -73,7 +73,7 @@ public double getLeftDistance() {
   return (talonLeft.getSelectedSensorPosition() - leftOffset) * distancePerPulse;
 }
 public double getRightDistance() {
-  return (talonRight.getSelectedSensorPosition() - leftOffset) * distancePerPulse;
+  return (talonRight.getSelectedSensorPosition() - rightOffset) * distancePerPulse;
 }
 public double getDistance() {
   return (getRightDistance()+ getLeftDistance()) * 0.5;

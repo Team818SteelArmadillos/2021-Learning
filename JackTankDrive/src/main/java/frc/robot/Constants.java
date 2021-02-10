@@ -5,7 +5,7 @@ public final class Constants {
     //Drive Motors
     public static int[] MOTOR_PORTS_LEFT = {1, 2, 3};
     public static int[] MOTOR_PORTS_RIGHT = {4, 5, 6};
-    public static boolean LEFT_INVETED = false; 
+    public static boolean LEFT_INVERTED = false; 
     public static double RAMP_RATE = 0;
 
     //Chassis constants
