@@ -10,12 +10,12 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveTrain;
 
 
-public class DistanceDrive extends CommandBase {
-  DriveTrain distanceDriveTrain;
+public class TurnDrive extends CommandBase {
+  DriveTrain turnDriveTrain;
   /** Creates a new DistanceDrive. */
-  public DistanceDrive() {
-    distanceDriveTrain = new DriveTrain();
-    addRequirements(distanceDriveTrain);
+  public TurnDrive() {
+    turnDriveTrain = new DriveTrain();
+    addRequirements(turnDriveTrain);
 
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -23,26 +23,27 @@ public class DistanceDrive extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    distanceDriveTrain.setBothMotors(0);
-    distanceDriveTrain.resetEncoders();
+    turnDriveTrain.setBothMotors(0);
+    turnDriveTrain.resetEncoders();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    distanceDriveTrain.setBothMotors(-0.3);
-    distanceDriveTrain.getDistance();
+    turnDriveTrain.setRightMotors(0.3);
+    turnDriveTrain.setLeftMotors(-0.3);
+    turnDriveTrain.getLeftDistance();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    distanceDriveTrain.setBothMotors(0);
+    turnDriveTrain.setBothMotors(0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return distanceDriveTrain.getDistance() > 20;
+    return turnDriveTrain.getLeftDistance() > 33 * Math.PI;
   }
 }

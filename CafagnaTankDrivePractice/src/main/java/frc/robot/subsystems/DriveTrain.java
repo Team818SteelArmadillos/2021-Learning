@@ -19,7 +19,7 @@ public class DriveTrain extends SubsystemBase {
   private double leftOffset = 0;
   private double rightOffset = 0;
  
-  private final double distancePerPulse = Math.PI * Constants.ENCODER_GEAR_RATIO / Constants.ENCODER_PULSES_PER_REVOLATION;
+  private final double distancePerPulse = Math.PI * Constants.WHEEL_DIAMETER * Constants.ENCODER_GEAR_RATIO / Constants.ENCODER_PULSES_PER_REVOLATION;
   public DriveTrain() {
     talonLeft = new TalonSRX(Constants.MOTOR_PORTS_LEFT[0]);
     talonRight = new TalonSRX(Constants.MOTOR_PORTS_RIGHT[0]);

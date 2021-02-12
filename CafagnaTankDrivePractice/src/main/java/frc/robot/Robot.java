@@ -11,7 +11,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.DistanceDrive;
+import frc.robot.commands.StationaryTurnDrive;
 import frc.robot.commands.TimeDrive;
+import frc.robot.commands.TurnDrive;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.OI;
  
@@ -72,13 +74,13 @@ public class Robot extends TimedRobot {
     driveTrain.setRightMotors(m_oi.getJoystickRightY());
  
     SmartDashboard.putNumber("Velocity (ft.s)", driveTrain.getVelocity());
-    SmartDashboard.putNumber("Distance Traveled (in)", driveTrain.getVelocity());
+    SmartDashboard.putNumber("Distance Traveled (in)", driveTrain.getDistance());
   }
 
   @Override
   public void autonomousInit() {
-    DistanceDrive autonCommand = new DistanceDrive();
-
+    StationaryTurnDrive autonCommand = new StationaryTurnDrive();
+    driveTrain.resetEncoders();
     // schedule the autonomous command (example)
     if (autonCommand != null) {
       autonCommand.schedule();
@@ -87,7 +89,12 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during autonomous. */
   @Override
-  public void autonomousPeriodic() {}
+  public void autonomousPeriodic() {
+
+    SmartDashboard.putNumber("Velocity (ft.s)", driveTrain.getVelocity());
+    SmartDashboard.putNumber("Distance Traveled (in)", driveTrain.getDistance());
+    SmartDashboard.putNumber("Left Distance Traveled (in)", driveTrain.getLeftDistance());
+  }
  
   @Override
   public void testInit() {
