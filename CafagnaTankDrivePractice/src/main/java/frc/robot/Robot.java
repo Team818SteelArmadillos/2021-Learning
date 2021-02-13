@@ -4,6 +4,8 @@
  
 package frc.robot;
  
+import javax.sound.midi.Sequence;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.command.TimedCommand;
@@ -11,6 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.DistanceDrive;
+import frc.robot.commands.Sequenceturndrive;
 import frc.robot.commands.StationaryTurnDrive;
 import frc.robot.commands.TimeDrive;
 import frc.robot.commands.TurnDrive;
@@ -73,17 +76,20 @@ public class Robot extends TimedRobot {
     driveTrain.setLeftMotors(m_oi.getJoystickLeftY());
     driveTrain.setRightMotors(m_oi.getJoystickRightY());
  
-    SmartDashboard.putNumber("Velocity (ft.s)", driveTrain.getVelocity());
-    SmartDashboard.putNumber("Distance Traveled (in)", driveTrain.getDistance());
+    //SmartDashboard.putNumber("Velocity (ft.s)", driveTrain.getVelocity());
+    //SmartDashboard.putNumber("Distance Traveled (in)", driveTrain.getDistance());
   }
 
   @Override
   public void autonomousInit() {
-    StationaryTurnDrive autonCommand = new StationaryTurnDrive();
+    //TurnDrive autonCommand = new TurnDrive(0);
+    //DistanceDrive autonDrive = new DistanceDrive(0);
     driveTrain.resetEncoders();
     // schedule the autonomous command (example)
-    if (autonCommand != null) {
-      autonCommand.schedule();
+    Sequenceturndrive autonsequence = new Sequenceturndrive();
+    if (autonsequence != null) {
+      autonsequence.schedule();
+            
     }
   }
 

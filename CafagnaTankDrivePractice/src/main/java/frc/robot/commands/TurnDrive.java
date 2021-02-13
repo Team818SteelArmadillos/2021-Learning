@@ -12,8 +12,10 @@ import frc.robot.subsystems.DriveTrain;
 
 public class TurnDrive extends CommandBase {
   DriveTrain turnDriveTrain;
+  public  double Angle;
   /** Creates a new DistanceDrive. */
-  public TurnDrive() {
+  public TurnDrive(double angle) {
+    Angle = angle;
     turnDriveTrain = new DriveTrain();
     addRequirements(turnDriveTrain);
 
@@ -32,7 +34,6 @@ public class TurnDrive extends CommandBase {
   public void execute() {
     turnDriveTrain.setRightMotors(0.3);
     turnDriveTrain.setLeftMotors(-0.3);
-    turnDriveTrain.getLeftDistance();
   }
 
   // Called once the command ends or is interrupted.
@@ -44,6 +45,6 @@ public class TurnDrive extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return turnDriveTrain.getLeftDistance() > 33 * Math.PI;
+    return turnDriveTrain.getLeftDistance() > Angle * Math.PI;
   }
 }
