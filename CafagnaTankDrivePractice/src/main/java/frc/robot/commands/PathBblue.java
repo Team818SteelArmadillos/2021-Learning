@@ -7,15 +7,16 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.commands.TurnDrive;
+import frc.robot.commands.RightTurnDrive;
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-public class Sequenceturndrive extends SequentialCommandGroup {
+public class PathBblue extends SequentialCommandGroup {
 
   /** Creates a new Sequenceturndrive. */
   DriveTrain drive = new DriveTrain();
 
-  public Sequenceturndrive() {
+  public PathBblue() {
     drive.resetEncoders();
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
@@ -24,6 +25,6 @@ public class Sequenceturndrive extends SequentialCommandGroup {
     //addCommands(new DistanceDrive(34), new TurnDrive(9.45), new DistanceDrive(34), new TurnDrive(9.45), new DistanceDrive(34), new TurnDrive(9.45), new DistanceDrive(34), new TurnDrive(9.45));
     
     //Box is twice as big
-    addCommands(new DistanceDrive(60), new TurnDrive(9.5), new DistanceDrive(60), new TurnDrive(9.0), new DistanceDrive(60), new TurnDrive(9.0), new DistanceDrive(60), new TurnDrive(9.0));
+    addCommands(new DistanceDrive(150), new TurnDrive(4.25), new DistanceDrive(84.8528), new TurnDrive(28.5), new DistanceDrive(84.8528), new TurnDrive(4.25), new DistanceDrive(30));
   }
 }

@@ -11,13 +11,16 @@ import frc.robot.subsystems.DriveTrain;
 
 
 public class RightTurnDrive extends CommandBase {
-  DriveTrain turnDriveTrain;
+  DriveTrain rightTurnDriveTrain;
   public  double Angle;
   /** Creates a new DistanceDrive. */
-  public RightTurnDrive(double angle) {
-    Angle = angle;
-    turnDriveTrain = new DriveTrain();
-    addRequirements(turnDriveTrain);
+  public RightTurnDrive(double angle)  {
+
+
+    // anlge is not defined... Angle = angle;
+
+    rightTurnDriveTrain = new DriveTrain();
+    addRequirements(rightTurnDriveTrain);
 
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -25,26 +28,26 @@ public class RightTurnDrive extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    turnDriveTrain.setBothMotors(0);
-    turnDriveTrain.resetEncoders();
+    rightTurnDriveTrain.setBothMotors(0);
+    rightTurnDriveTrain.resetEncoders();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    turnDriveTrain.setRightMotors(-0.3);
-    turnDriveTrain.setLeftMotors(0.3);
+   rightTurnDriveTrain.setRightMotors(-0.3);
+    rightTurnDriveTrain.setLeftMotors(0.3);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    turnDriveTrain.setBothMotors(0);
+    rightTurnDriveTrain.setBothMotors(0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return turnDriveTrain.getRightDistance() > Angle * Math.PI;
+    return rightTurnDriveTrain.getRightDistance() > Angle * Math.PI;
   }
 }

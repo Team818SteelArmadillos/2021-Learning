@@ -12,13 +12,18 @@ import edu.wpi.first.wpilibj.command.TimedCommand;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.commands.BallBoxDrive;
 import frc.robot.commands.DistanceDrive;
+import frc.robot.commands.FigureEightDrive;
+import frc.robot.commands.PathA;
 import frc.robot.commands.Sequenceturndrive;
 import frc.robot.commands.StationaryTurnDrive;
 import frc.robot.commands.TimeDrive;
 import frc.robot.commands.TurnDrive;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.OI;
+import frc.robot.commands.RightTurnDrive;
+import frc.robot.commands.PathBblue;
  
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -86,7 +91,7 @@ public class Robot extends TimedRobot {
     //DistanceDrive autonDrive = new DistanceDrive(0);
     driveTrain.resetEncoders();
     // schedule the autonomous command (example)
-    Sequenceturndrive autonsequence = new Sequenceturndrive();
+    PathBblue autonsequence = new PathBblue();
     if (autonsequence != null) {
       autonsequence.schedule();
             

@@ -10,20 +10,16 @@ import frc.robot.commands.TurnDrive;
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-public class Sequenceturndrive extends SequentialCommandGroup {
+public class FigureEightDrive extends SequentialCommandGroup {
 
-  /** Creates a new Sequenceturndrive. */
+  /** Creates a new FigureEightDrive. */
   DriveTrain drive = new DriveTrain();
 
-  public Sequenceturndrive() {
+  public FigureEightDrive() {
     drive.resetEncoders();
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-
-    //If box is too small, it will turn instead of moving forward
-    //addCommands(new DistanceDrive(34), new TurnDrive(9.45), new DistanceDrive(34), new TurnDrive(9.45), new DistanceDrive(34), new TurnDrive(9.45), new DistanceDrive(34), new TurnDrive(9.45));
-    
-    //Box is twice as big
-    addCommands(new DistanceDrive(60), new TurnDrive(9.5), new DistanceDrive(60), new TurnDrive(9.0), new DistanceDrive(60), new TurnDrive(9.0), new DistanceDrive(60), new TurnDrive(9.0));
+    //Isn't finsihed yet...
+    addCommands(new DistanceDrive(60), new TurnDrive(28.5), new DistanceDrive(36), new TurnDrive(28.5), new DistanceDrive(72), new TurnDrive(28.5), new DistanceDrive(72), new TurnDrive(28.5), new DistanceDrive(72), new TurnDrive(19), new DistanceDrive(180), new TurnDrive(9.5), new DistanceDrive(72), new TurnDrive(9.5), new DistanceDrive(72), new TurnDrive(9.5), new DistanceDrive(72), new TurnDrive(28.5), new DistanceDrive(72));
   }
 }
