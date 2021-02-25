@@ -11,12 +11,12 @@ import frc.robot.commands.RightTurnDrive;
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-public class PathA extends SequentialCommandGroup {
+public class PathBRed extends SequentialCommandGroup {
 
   /** Creates a new Sequenceturndrive. */
   DriveTrain drive = new DriveTrain();
 
-  public PathA() {
+  public PathBRed() {
     drive.resetEncoders();
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
@@ -25,7 +25,8 @@ public class PathA extends SequentialCommandGroup {
     //addCommands(new DistanceDrive(34), new TurnDrive(9.45), new DistanceDrive(34), new TurnDrive(9.45), new DistanceDrive(34), new TurnDrive(9.45), new DistanceDrive(34), new TurnDrive(9.45));
     
     //Box is twice as big
-    //addCommands(new DistanceDrive(60), new RightTurnDrive(9.5));
-    addCommands(new DistanceDrive(60), new TurnDrive(32.75), new DistanceDrive(84.8528), new TurnDrive(9.5), new DistanceDrive(84), new TurnDrive(32.75), new DistanceDrive(120));
-  }
+    addCommands(new RightTurnDrive(70));
+    //addCommands(new TurnDrive(9.5));
+    //addCommands(new DistanceDrive(60), new TurnDrive(32.75), new DistanceDrive(84.8528), new TurnDrive(9.5), new DistanceDrive(84), new TurnDrive(32.75), new DistanceDrive(120));
+  } 
 }

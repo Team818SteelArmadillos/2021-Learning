@@ -15,7 +15,8 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.BallBoxDrive;
 import frc.robot.commands.DistanceDrive;
 import frc.robot.commands.FigureEightDrive;
-import frc.robot.commands.PathA;
+import frc.robot.commands.PathBRed;
+import frc.robot.commands.PathBRed;
 import frc.robot.commands.Sequenceturndrive;
 import frc.robot.commands.StationaryTurnDrive;
 import frc.robot.commands.TimeDrive;
@@ -91,7 +92,7 @@ public class Robot extends TimedRobot {
     //DistanceDrive autonDrive = new DistanceDrive(0);
     driveTrain.resetEncoders();
     // schedule the autonomous command (example)
-    PathBblue autonsequence = new PathBblue();
+    PathBRed autonsequence = new PathBRed();
     if (autonsequence != null) {
       autonsequence.schedule();
             
@@ -105,6 +106,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Velocity (ft.s)", driveTrain.getVelocity());
     SmartDashboard.putNumber("Distance Traveled (in)", driveTrain.getDistance());
     SmartDashboard.putNumber("Left Distance Traveled (in)", driveTrain.getLeftDistance());
+    SmartDashboard.putNumber("Right Distance Traveled (in)", driveTrain.getRightDistance());
   }
  
   @Override

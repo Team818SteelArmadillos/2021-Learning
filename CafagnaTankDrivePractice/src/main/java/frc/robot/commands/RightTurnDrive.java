@@ -48,6 +48,6 @@ public class RightTurnDrive extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return rightTurnDriveTrain.getRightDistance() > Angle * Math.PI;
+    return rightTurnDriveTrain.getRightDistance() < (-1 * Angle * Math.PI);
   }
 }
