@@ -7,17 +7,15 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.DriveTrain;
+import frc.robot.Robot;
 
 
 public class TurnDrive extends CommandBase {
-  DriveTrain turnDriveTrain;
   public  double Angle;
   /** Creates a new DistanceDrive. */
   public TurnDrive(double angle) {
     Angle = angle;
-    turnDriveTrain = new DriveTrain();
-    addRequirements(turnDriveTrain);
+    addRequirements(Robot.m_driveSubsystem);
 
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -25,26 +23,26 @@ public class TurnDrive extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    turnDriveTrain.setBothMotors(0);
-    turnDriveTrain.resetEncoders();
+    Robot.m_driveSubsystem.setBothMotors(0);
+    Robot.m_driveSubsystem.resetEncoders();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    turnDriveTrain.setRightMotors(0.3);
-    turnDriveTrain.setLeftMotors(-0.3);
+    Robot.m_driveSubsystem.setRightMotors(0.3);
+    Robot.m_driveSubsystem.setLeftMotors(-0.3);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    turnDriveTrain.setBothMotors(0);
+    Robot.m_driveSubsystem.setBothMotors(0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return turnDriveTrain.getLeftDistance() > Angle * Math.PI;
+    return Robot.m_driveSubsystem.getLeftDistance() > Angle * 36 * Math.PI / 360;
   }
 }

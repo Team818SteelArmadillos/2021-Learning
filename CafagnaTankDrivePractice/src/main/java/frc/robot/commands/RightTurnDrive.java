@@ -15,7 +15,7 @@ public class RightTurnDrive extends CommandBase {
   public  double Angle;
   /** Creates a new DistanceDrive. */
   public RightTurnDrive(double angle)  {
-
+    Angle = angle;
 
     // anlge is not defined... Angle = angle;
 
@@ -48,6 +48,6 @@ public class RightTurnDrive extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return rightTurnDriveTrain.getRightDistance() < (-1 * Angle * Math.PI);
+    return rightTurnDriveTrain.getLeftDistance() > -1 * Angle * Math.PI;
   }
 }

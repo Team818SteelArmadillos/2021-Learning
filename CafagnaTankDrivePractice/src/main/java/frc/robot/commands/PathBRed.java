@@ -25,8 +25,12 @@ public class PathBRed extends SequentialCommandGroup {
     //addCommands(new DistanceDrive(34), new TurnDrive(9.45), new DistanceDrive(34), new TurnDrive(9.45), new DistanceDrive(34), new TurnDrive(9.45), new DistanceDrive(34), new TurnDrive(9.45));
     
     //Box is twice as big
-    addCommands(new RightTurnDrive(70));
-    //addCommands(new TurnDrive(9.5));
-    //addCommands(new DistanceDrive(60), new TurnDrive(32.75), new DistanceDrive(84.8528), new TurnDrive(9.5), new DistanceDrive(84), new TurnDrive(32.75), new DistanceDrive(120));
+    //addCommands(new RightTurnDrive(9.5));
+    //addCommands(new TurnDrive(17));
+    //addCommands(new DistanceDrive(60), new TurnDrive(8.5), new TurnDrive(8.5), new TurnDrive(8.5), new TurnDrive(4.25), new DistanceDrive(84.8528), new TurnDrive(8.5), new DistanceDrive(84), new TurnDrive(29.75), new DistanceDrive(120));
+    //addCommands(new DistanceDrive(60), new TurnDrive(8.5), new DistanceDrive(0), new TurnDrive(8.5), new TurnDrive(8.5), new TurnDrive(4.25), new DistanceDrive(84.8528));
+    //addCommands(new TurnDrive(4.25));
+    addCommands(new DistanceDrive(60), new TurnDrive(315), new DistanceDrive(84.8528), new TurnDrive(90), new DistanceDrive(84), new TurnDrive(315), new DistanceDrive(120));
+
   } 
 }
