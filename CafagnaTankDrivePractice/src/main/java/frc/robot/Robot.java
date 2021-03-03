@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.TimedCommand;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.commands.ArchTurn;
 import frc.robot.commands.BallBoxDrive;
 import frc.robot.commands.DistanceDrive;
 import frc.robot.commands.FigureEightDrive;
@@ -95,6 +96,7 @@ public class Robot extends TimedRobot {
     //DistanceDrive autonDrive = new DistanceDrive(0);
     driveTrain.resetEncoders();
     // schedule the autonomous command (example)
+    //ArchTurn autonsequence = new ArchTurn();
     PathBRed autonsequence = new PathBRed();
     if (autonsequence != null) {
       autonsequence.schedule();
