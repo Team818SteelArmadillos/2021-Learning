@@ -5,10 +5,12 @@
 package frc.robot.subsystems;
  
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
  
 public class OI extends SubsystemBase {
+ XboxController controller = new XboxController(Constants.XBOX_PORT);
  Joystick joyLeft = new Joystick(Constants.JOYSTICK_PORT_LEFT);
  Joystick joyRight = new Joystick(Constants.JOYSTICK_PORT_RIGHT);
  
@@ -18,6 +20,10 @@ public class OI extends SubsystemBase {
  
  public double getJoystickRightY(){
   return (Math.abs(joyRight.getY()) < Constants.JOYSTICK_RIGHT_DEADZONE_Y ? 0: joyRight.getY());
+ }
+
+ public boolean getXButton() {
+return controller.getXButton();
  }
   public OI() {}
  

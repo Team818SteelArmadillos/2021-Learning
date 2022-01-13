@@ -14,8 +14,9 @@ package frc.robot;
  */
 public final class Constants {
     //Drive Motors
-    public static int[] MOTOR_PORTS_LEFT = {1, 2, 3};
-    public static int[] MOTOR_PORTS_RIGHT = {4, 5, 6};
+    public static int[] MOTOR_PORTS_LEFT = {1, 2};
+    public static int[] MOTOR_PORTS_RIGHT = {3, 4};
+    public static int INTAKE_PORT = 5;
     public static boolean LEFT_INVERTED = false;
     public static boolean RIGHT_INVERTED = true;
     public static double RAMP_RATE = 0;
@@ -28,6 +29,7 @@ public final class Constants {
  
     public static int JOYSTICK_PORT_LEFT = 0; 
     public static int JOYSTICK_PORT_RIGHT = 1;
+    public static int XBOX_PORT = 2;
     public static double JOYSTICK_LEFT_DEADZONE_Y = 0.02;
     public static double JOYSTICK_RIGHT_DEADZONE_Y = 0.02;
  

@@ -16,6 +16,8 @@ import frc.robot.commands.TimeDrive;
 import frc.robot.commands.TurnDrive;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.OI;
+import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.commands.IntakeCommand;
  
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -26,8 +28,8 @@ import frc.robot.subsystems.OI;
 public class Robot extends TimedRobot {
   public static DriveTrain driveTrain = new DriveTrain();
   public static OI m_oi = new OI();
-  
- 
+  public static IntakeSubsystem m_IntakeSubsystem;
+  public static IntakeCommand m_IntakeCommand;
   private RobotContainer m_robotContainer;
  
   /**
@@ -76,6 +78,14 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Velocity (ft.s)", driveTrain.getVelocity());
     SmartDashboard.putNumber("Distance Traveled (in)", driveTrain.getDistance());
   }
+
+@Override
+
+public void teleopInit() {
+  m_IntakeCommand.schedule();
+}
+
+
 
   @Override
   public void autonomousInit() {
