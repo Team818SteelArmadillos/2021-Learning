@@ -17,13 +17,14 @@ public class IntakeCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    Robot.m_IntakeSubsystem.setIntake(0);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     if (Robot.m_oi.getXButton()) {
-      Robot.m_IntakeSubsystem.setIntake(.5);
+      Robot.m_IntakeSubsystem.setIntake(0.5);
     }
   }
 

@@ -28,8 +28,7 @@ import frc.robot.commands.IntakeCommand;
 public class Robot extends TimedRobot {
   public static DriveTrain driveTrain = new DriveTrain();
   public static OI m_oi = new OI();
-  public static IntakeSubsystem m_IntakeSubsystem;
-  public static IntakeCommand m_IntakeCommand;
+  public static IntakeSubsystem m_IntakeSubsystem = new IntakeSubsystem();
   private RobotContainer m_robotContainer;
  
   /**
@@ -66,7 +65,11 @@ public class Robot extends TimedRobot {
   @Override
   public void disabledPeriodic() {}
  
- 
+  @Override
+
+  public void teleopInit() {
+    
+  }
  
   /** This function is called periodically during operator control. */
   @Override
@@ -75,17 +78,14 @@ public class Robot extends TimedRobot {
     driveTrain.setLeftMotors(m_oi.getJoystickLeftY());
     driveTrain.setRightMotors(m_oi.getJoystickRightY());
  
+    if (m_oi.getXButton()) {
+      m_IntakeSubsystem.setIntake(-1);
+    }else {
+      m_IntakeSubsystem.setIntake(0);
+    }
     SmartDashboard.putNumber("Velocity (ft.s)", driveTrain.getVelocity());
     SmartDashboard.putNumber("Distance Traveled (in)", driveTrain.getDistance());
   }
-
-@Override
-
-public void teleopInit() {
-  m_IntakeCommand.schedule();
-}
-
-
 
   @Override
   public void autonomousInit() {
