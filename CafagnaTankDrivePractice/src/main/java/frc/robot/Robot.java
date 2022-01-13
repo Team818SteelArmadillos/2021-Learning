@@ -78,9 +78,11 @@ public class Robot extends TimedRobot {
     driveTrain.setLeftMotors(m_oi.getJoystickLeftY());
     driveTrain.setRightMotors(m_oi.getJoystickRightY());
  
-    if (m_oi.getXButton()) {
+    if (m_oi.getXButton() && !(m_oi.getAButton())) {
       m_IntakeSubsystem.setIntake(-1);
-    }else {
+    } else if (m_oi.getAButton() && !(m_oi.getXButton())) {
+      m_IntakeSubsystem.setIntake(1);
+    } else {
       m_IntakeSubsystem.setIntake(0);
     }
     SmartDashboard.putNumber("Velocity (ft.s)", driveTrain.getVelocity());

@@ -25,6 +25,10 @@ public class OI extends SubsystemBase {
  public boolean getXButton() {
 return controller.getXButton();
  }
+
+ public boolean getAButton() {
+  return controller.getAButton(); 
+ }
   public OI() {}
  
   @Override
