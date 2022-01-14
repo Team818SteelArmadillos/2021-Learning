@@ -29,6 +29,9 @@ return controller.getXButton();
  public boolean getAButton() {
   return controller.getAButton(); 
  }
+ public boolean getYButton() {
+   return controller.getYButton();
+ }
   public OI() {}
  
   @Override

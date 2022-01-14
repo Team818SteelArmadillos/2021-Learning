@@ -17,6 +17,7 @@ public final class Constants {
     public static int[] MOTOR_PORTS_LEFT = {1, 2};
     public static int[] MOTOR_PORTS_RIGHT = {3, 4};
     public static int INTAKE_PORT = 6;
+    public static int[] SHOOTER_PORTS = {7, 8, 9, 10};
     public static boolean LEFT_INVERTED = true;
     public static boolean RIGHT_INVERTED = false;
     public static double RAMP_RATE = 0;

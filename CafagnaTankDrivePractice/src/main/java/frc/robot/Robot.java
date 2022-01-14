@@ -4,20 +4,18 @@
  
 package frc.robot;
  
+import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.command.TimedCommand;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.commands.DistanceDrive;
-import frc.robot.commands.StationaryTurnDrive;
-import frc.robot.commands.TimeDrive;
-import frc.robot.commands.TurnDrive;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.OI;
+import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.commands.IntakeCommand;
+import frc.robot.commands.ShooterCommand;
  
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -29,7 +27,9 @@ public class Robot extends TimedRobot {
   public static DriveTrain driveTrain = new DriveTrain();
   public static OI m_oi = new OI();
   public static IntakeSubsystem m_IntakeSubsystem = new IntakeSubsystem();
-  private RobotContainer m_robotContainer;
+  public static IntakeCommand m_IntakeCommand;
+  public static ShooterSubsystem m_ShooterSubsystem = new ShooterSubsystem();
+  public static ShooterCommand m_ShooterCommand;
  
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -37,9 +37,12 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
-    m_robotContainer = new RobotContainer();
+    
+    m_IntakeCommand = new IntakeCommand();
+    m_ShooterCommand = new ShooterCommand();
   }
  
   /**
@@ -65,11 +68,6 @@ public class Robot extends TimedRobot {
   @Override
   public void disabledPeriodic() {}
  
-  @Override
-
-  public void teleopInit() {
-    
-  }
  
   /** This function is called periodically during operator control. */
   @Override
@@ -77,26 +75,16 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
     driveTrain.setLeftMotors(m_oi.getJoystickLeftY());
     driveTrain.setRightMotors(m_oi.getJoystickRightY());
- 
-    if (m_oi.getXButton() && !(m_oi.getAButton())) {
-      m_IntakeSubsystem.setIntake(-1);
-    } else if (m_oi.getAButton() && !(m_oi.getXButton())) {
-      m_IntakeSubsystem.setIntake(1);
-    } else {
-      m_IntakeSubsystem.setIntake(0);
-    }
-    SmartDashboard.putNumber("Velocity (ft.s)", driveTrain.getVelocity());
-    SmartDashboard.putNumber("Distance Traveled (in)", driveTrain.getDistance());
+  }
+  @Override
+
+  public void teleopInit() {
+    
+    m_IntakeCommand.schedule();
   }
 
   @Override
   public void autonomousInit() {
-    StationaryTurnDrive autonCommand = new StationaryTurnDrive();
-    driveTrain.resetEncoders();
-    // schedule the autonomous command (example)
-    if (autonCommand != null) {
-      autonCommand.schedule();
-    }
   }
 
   /** This function is called periodically during autonomous. */
