@@ -16,13 +16,13 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.Robot;
 
-public class ShooterSubsystem extends SubsystemBase {
+public class ShooterSubsystemTest extends SubsystemBase {
 
   public VictorSPX victor1, victor2, victor3;
   public TalonSRX talon1;
   private double ShooterMotorSpeed;
   /** Creates a new ShooterSubsystem. */
-  public ShooterSubsystem() {
+  public ShooterSubsystemTest() {
    // This method will be called once per scheduler run
     victor1 = new VictorSPX(Constants.SHOOTER_PORTS[0]);
     victor2 = new VictorSPX(Constants.SHOOTER_PORTS[1]);
@@ -45,26 +45,14 @@ public class ShooterSubsystem extends SubsystemBase {
     
     
   }
-  public double getCurrentShooterSpeed(){
-
-    return talon1.getSelectedSensorVelocity() * Constants.velocityCalculationsPerSecond *-1 * 60 / Constants.encoderPulsesPerRevolution;
-    //Revolutions per mintue. Negative is to account for the change in direction.
-
-  }
   @Override
   public void periodic() {
-    //this defines what the shooter motor speed is
-
-    //ShooterMotorSpeed = SmartDashboard.getNumber("Shooter speed", 0.0);
-    ShooterMotorSpeed = 0.5;
+    ShooterMotorSpeed = SmartDashboard.getNumber("Shooter speed", 0.0);
 
  
   }
   public void setPower(double power) {
-    victor1.set(ControlMode.PercentOutput, ShooterMotorSpeed);
-  }
-  public void showPower(double power) {
-    SmartDashboard.putNumber("shooter rpm", getCurrentShooterSpeed());
+    victor1.set(ControlMode.PercentOutput, 1);
   }
 }
 

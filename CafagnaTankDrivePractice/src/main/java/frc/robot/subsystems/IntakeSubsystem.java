@@ -4,14 +4,26 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 public class IntakeSubsystem extends SubsystemBase {
   /** Creates a new IntakeSubsystem. */
-  public IntakeSubsystem() {}
+  private VictorSPX MotorIntake;
+  public IntakeSubsystem() {
+    MotorIntake = new VictorSPX(Constants.INTAKE_PORT);
+  }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
   }
+  public void setIntake(double power) {
+    MotorIntake.set(ControlMode.PercentOutput, power);
+    }
+
 }
+

@@ -79,7 +79,7 @@ public class Robot extends TimedRobot {
   @Override
 
   public void teleopInit() {
-    
+    m_ShooterCommand.schedule();
     m_IntakeCommand.schedule();
   }
 
