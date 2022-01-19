@@ -5,22 +5,16 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
-import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.Victor;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import frc.robot.Robot;
 
 public class ShooterSubsystem extends SubsystemBase {
 
   public VictorSPX victor1, victor2, victor3;
   public TalonSRX talon1;
-  private double ShooterMotorSpeed;
   /** Creates a new ShooterSubsystem. */
   public ShooterSubsystem() {
    // This method will be called once per scheduler run
@@ -34,14 +28,14 @@ public class ShooterSubsystem extends SubsystemBase {
     victor3.configFactoryDefault();
     talon1.configFactoryDefault();
 
-    victor2.follow(victor1);
-    victor3.follow(victor1);
-    talon1.follow(victor1);
+    victor1.follow(talon1);
+    victor2.follow(talon1);
+    victor3.follow(talon1);
 
-    victor1.setInverted(Constants.SHOOTER_LEFT_SIDE_INVERTED);
-    victor2.setInverted(Constants.SHOOTER_LEFT_SIDE_INVERTED);
-    victor3.setInverted(Constants.SHOOTER_RIGHT_INVERTED);
-    talon1.setInverted(Constants.SHOOTER_RIGHT_INVERTED);
+    victor1.setInverted(Constants.SHOOTER_INVERTED);
+    victor2.setInverted(Constants.SHOOTER_INVERTED);
+    victor3.setInverted(Constants.SHOOTER_INVERTED);
+    talon1.setInverted(Constants.SHOOTER_INVERTED);
     
     
   }
@@ -53,18 +47,10 @@ public class ShooterSubsystem extends SubsystemBase {
   }
   @Override
   public void periodic() {
-    //this defines what the shooter motor speed is
-
-    //ShooterMotorSpeed = SmartDashboard.getNumber("Shooter speed", 0.0);
-    ShooterMotorSpeed = 0.5;
-
  
   }
   public void setPower(double power) {
-    victor1.set(ControlMode.PercentOutput, ShooterMotorSpeed);
-  }
-  public void showPower(double power) {
-    SmartDashboard.putNumber("shooter rpm", getCurrentShooterSpeed());
+    talon1.set(ControlMode.PercentOutput, power);
   }
 }
 

@@ -38,10 +38,10 @@ public class ShooterSubsystemTest extends SubsystemBase {
     victor3.follow(victor1);
     talon1.follow(victor1);
 
-    victor1.setInverted(Constants.SHOOTER_LEFT_SIDE_INVERTED);
-    victor2.setInverted(Constants.SHOOTER_LEFT_SIDE_INVERTED);
-    victor3.setInverted(Constants.SHOOTER_RIGHT_INVERTED);
-    talon1.setInverted(Constants.SHOOTER_RIGHT_INVERTED);
+    //victor1.setInverted(Constants.SHOOTER_LEFT_SIDE_INVERTED);
+    //victor2.setInverted(Constants.SHOOTER_LEFT_SIDE_INVERTED);
+    //victor3.setInverted(Constants.SHOOTER_RIGHT_INVERTED);
+    //talon1.setInverted(Constants.SHOOTER_RIGHT_INVERTED);
     
     
   }

@@ -1,30 +1,24 @@
- /*
+ 
  package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.Robot;
 
 public class ShooterPID extends CommandBase {
   PIDController ShootPID;
 
-  private double p;
-  private double i;
-  private double d;
   private double dist[][];
 
   private double rpm;
   
   public ShooterPID() {
-    addRequirements(Robot.m_shooterSubsystem);
-    addRequirements(Robot.m_newintakesubsystem);
-    addRequirements(Robot.m_shootervisionSubsystem);
-
-    p = 0.0009;
-    i = 0.00537;
-    d = 0.00003657;
-    rpm = 3000;
+    addRequirements(Robot.m_ShooterSubsystem);
+    //addRequirements(Robot.m_newintakesubsystem);
+    //addRequirements(Robot.m_shootervisionSubsystem);
+    
     dist = new double[8][2];
 
     dist[0][0] = 110;
@@ -45,7 +39,7 @@ public class ShooterPID extends CommandBase {
     dist[7][1] = 5000;
     
 
-    ShootPID = new PIDController(p, i, d);
+    ShootPID = new PIDController(Constants.p, Constants.i, Constants.d);
 
     ShootPID.setTolerance(10);
 
@@ -54,8 +48,8 @@ public class ShooterPID extends CommandBase {
 
   @Override
   public void initialize() {
-    Robot.m_shooterSubsystem.setPower(0);
-    Robot.m_shootervisionSubsystem.LightOn();
+    Robot.m_ShooterSubsystem.setPower(0);
+    //Robot.m_shootervisionSubsystem.LightOn();
   }
 
   @Override
@@ -64,7 +58,7 @@ public class ShooterPID extends CommandBase {
     rpm = SmartDashboard.getNumber("speed", 0);
 
     Robot.m_ShooterSubsystem.setPower(ShootPID.calculate(rpm - Robot.m_ShooterSubsystem.getCurrentShooterSpeed()));
-    SmartDashboard.putNumber("Shooter Speed", Robot.m_ShooterSubsystem.getCurrentShooterSpeed());
+    SmartDashboard.putNumber("current shooter rpm", Robot.m_ShooterSubsystem.getCurrentShooterSpeed());
 
     if(ShootPID.atSetpoint()){
       Robot.m_IntakeSubsystem.setIntake(0.5);
@@ -73,14 +67,14 @@ public class ShooterPID extends CommandBase {
 
   @Override
   public void end(boolean interrupted) {
-    Robot.m_shooterSubsystem.setPower(0);
+    Robot.m_ShooterSubsystem.setPower(0);
   }
 
   @Override
   public boolean isFinished() {
     return false;
   }
-  private double shooterSpeed(double distance) {
+  private double ShooterSpeed(double distance) {
     if (distance <= dist[0][0] || distance > dist[7][0]) {
       return 5000;
     }
@@ -89,4 +83,3 @@ public class ShooterPID extends CommandBase {
      return dist[i-1][1] + (distance - dist[i-1][0]) * (dist[i][1] - dist[i-1][1])/(dist[i][0] - dist[i-1][0]);
   }
 }
-*/

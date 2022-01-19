@@ -14,6 +14,7 @@ public class OI extends SubsystemBase {
  Joystick joyLeft = new Joystick(Constants.JOYSTICK_PORT_LEFT);
  Joystick joyRight = new Joystick(Constants.JOYSTICK_PORT_RIGHT);
  
+ 
  public double getJoystickLeftY(){
    return (Math.abs(joyLeft.getY()) < Constants.JOYSTICK_LEFT_DEADZONE_Y ? 0: joyLeft.getY());
  }
@@ -29,8 +30,8 @@ return controller.getXButton();
  public boolean getAButton() {
   return controller.getAButton(); 
  }
- public boolean getYButton() {
-   return controller.getYButton();
+ public boolean getBButton() {
+   return controller.getBButton();
  }
   public OI() {}
  

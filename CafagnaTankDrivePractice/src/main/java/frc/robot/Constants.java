@@ -17,15 +17,10 @@ public final class Constants {
     public static int[] MOTOR_PORTS_LEFT = {1, 2};
     public static int[] MOTOR_PORTS_RIGHT = {3, 4};
     public static int INTAKE_PORT = 6;
-    public static int[] SHOOTER_PORTS = {7, 8, 9, 10};
-    public static final double kP = 0.0006;
-    public static final double kI = 0.001;
-    public static final double kD = 0.0;
-    public static final double kShooterToleranceRPM = 100;
+    public static int[] SHOOTER_PORTS = {12, 11, 7, 13};
     public static boolean LEFT_INVERTED = true;
     public static boolean RIGHT_INVERTED = false;
-    public static boolean SHOOTER_LEFT_SIDE_INVERTED = true;
-    public static boolean SHOOTER_RIGHT_INVERTED = false;
+    public static boolean SHOOTER_INVERTED = false;
     public static double RAMP_RATE = 0;
  
     //Chassis constants
@@ -41,7 +36,11 @@ public final class Constants {
     public static double JOYSTICK_RIGHT_DEADZONE_Y = 0.02;
 
     public static final double velocityCalculationsPerSecond = 10;
-    public static final double encoderPulsesPerRevolution = 2048;
+    public static final double encoderPulsesPerRevolution = 4096; 
+
+    public static final double p = 0.0009;
+    public static final double i = 0.00537;
+    public static final double d = 0.00003657;
  
 }
  
