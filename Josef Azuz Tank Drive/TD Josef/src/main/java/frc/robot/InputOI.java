@@ -13,7 +13,7 @@ public class InputOI extends SubsystemBase {
 
   XboxController controller = new XboxController(0);
   static Joystick leftJoystick = new Joystick(0);
-  static Joystick rightJoystick = new Joystick(0);
+  static Joystick rightJoystick = new Joystick(1);
 
   public static double getJoystickleftY() {
     return (Math.abs(leftJoystick.getY()) <0.02 ? 0: leftJoystick.getY());

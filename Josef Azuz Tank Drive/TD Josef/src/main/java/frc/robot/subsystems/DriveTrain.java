@@ -4,6 +4,10 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+
 import edu.wpi.first.wpilibj.motorcontrol.Talon;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -11,12 +15,16 @@ import frc.robot.Constants;
 public class DriveTrain extends SubsystemBase {
   /** Creates a new DriveTrain. */
   public DriveTrain() {}
-private static Talon leftMotors = new Talon(Constants.LEFT_MOTOR_PORT);
-private static Talon rightMotors = new Talon(Constants.RIGHT_MOTOR_PORT);
+private static TalonSRX leftMotors = new TalonSRX(Constants.LEFT_MOTOR_PORT);
+private static VictorSPX leftVictor = new VictorSPX(Constants.LEFT_VICTOR_PORT);
+private static TalonSRX rightMotors = new TalonSRX(Constants.RIGHT_MOTOR_PORT);
+private static VictorSPX rightVictor = new VictorSPX(Constants.RIGHT_VICTOR_PORT);
 
 public static void SetMotors(double leftSpeed, double rightSpeed){
-  leftMotors.set(leftSpeed);
-  rightMotors.set(rightSpeed);
+  leftMotors.set(ControlMode.PercentOutput,-leftSpeed);
+  leftVictor.set(ControlMode.PercentOutput,-leftSpeed);
+rightMotors.set(ControlMode.PercentOutput,rightSpeed);
+rightVictor.set(ControlMode.PercentOutput,rightSpeed);
 }
 
 
