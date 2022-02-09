@@ -73,42 +73,6 @@ public DriveTrain() {
   }
   //syncs both talon speeds
 
-  public void resetEncoders() {
-    leftOffset = leftTalon.getSelectedSensorPosition();
-    rightOffset = rightTalon.getSelectedSensorPosition();
-  }
-  //idk what this does
-
-  public double getLeftDistance() {
-    return (leftTalon.getSelectedSensorPosition() - leftOffset) * distancePerPulse;
-  }
-  //gets left talon distance
-
-  public double getRightDistance() {
-    return (rightTalon.getSelectedSensorPosition() - rightOffset) *distancePerPulse;
-  }
-  //gets right motor distance
-
-  public double getDistance() {
-    return (getRightDistance() + getLeftDistance()) * 0.5;
-  }
-  //gets average distance
-  
-  public double getleftVelocity() {
-    return leftTalon.getSelectedSensorVelocity() * distancePerPulse * Constants.VELOCITY_CALCULATIONS_PER_SECOND / 12;
-  }
-  //gets velocity of the left talon
-
-  public double getRightVelocity() {
-    return rightTalon.getSelectedSensorVelocity() * distancePerPulse * Constants.VELOCITY_CALCULATIONS_PER_SECOND / 12;
-  }
-  //gets velocity of the right talon
-
-  public double getVelocity() {
-    return (getleftVelocity() + getRightVelocity()) * 0.5;
-  }
-//gets average velocity
-
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
