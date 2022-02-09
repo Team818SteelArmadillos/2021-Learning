@@ -3,14 +3,9 @@ package frc.robot;
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-  import edu.wpi.first.wpilibj.Sendable;
   import edu.wpi.first.wpilibj.TimedRobot;
-  import edu.wpi.first.wpilibj.command.Scheduler;
-  import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-  import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
   import edu.wpi.first.wpilibj2.command.CommandScheduler;
-  import frc.robot.subsystems.DriveTrain;
-  import frc.robot.subsystems.OI;
+import frc.robot.commands.TankDriveCommand;
 
 
  /** * The VM is configured to automatically run this class, and to call the functions corresponding to 
@@ -19,9 +14,6 @@ package frc.robot;
 * project. 
 */
 public class Robot extends TimedRobot { 
-  public static DriveTrain driveTrain = new DriveTrain(); 
-  public static OI m_oi = new OI(); 
-  public static TankDriveCommand m_TankDriveCommand;
 
 /** * This function is run when the robot is first started up and should be used for any 
 * initialization code. 
@@ -32,7 +24,6 @@ public class Robot extends TimedRobot {
   // Instantiate our RobotContainer. This will perform all our button bindings, and put our 
   // autonomous chooser on the dashboard. 
 
-    m_TankDriveCommand = new TankDriveCommand();
 } 
 
 /** 
@@ -62,12 +53,12 @@ public void disabledPeriodic() {}
 /** This function is called periodically during operator control. */ 
 
 @Override public void teleopPeriodic() { 
-  Scheduler.getInstance().run();  
+  
 } 
 
 @Override 
 public void teleopInit() { 
-  m_TankDriveCommand.schedule();
+  (new TankDriveCommand()).schedule();
 } 
 
 @Override 
@@ -90,4 +81,3 @@ public void testInit() {
   public void testPeriodic() {}
 }
 /** Add your docs here. */
-public class Robot {}
