@@ -39,7 +39,7 @@ public class driveSubsystem extends SubsystemBase {
 
     victorsLeft = new VictorSPX[Constants.MOTOR_PORTS_LEFT.length- 1];
     for (int i = 1; i < Constants.MOTOR_PORTS_LEFT.length; i++) {
-      victorsLeft[i=1] = new VictorSPX(Constants.MOTOR_PORTS_LEFT[i]);
+      victorsLeft[i-1] = new VictorSPX(Constants.MOTOR_PORTS_LEFT[i]);
       victorsLeft[i-1].configFactoryDefault();
       victorsLeft[i-1].follow(talonLeft);
       victorsLeft[i-1].setInverted(Constants.LEFT_INVERTED);
