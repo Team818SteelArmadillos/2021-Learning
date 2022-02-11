@@ -15,11 +15,7 @@ import frc.robot.Constants;
 public class DriveTrain extends SubsystemBase {
   private TalonSRX talonLeft, talonRight;
   private VictorSPX[] victorsLeft, victorsRight;
-  
-  private double leftOffset = 0;
-  private double rightOffset = 0;
- 
-  private final double distancePerPulse = Math.PI * Constants.WHEEL_DIAMETER * Constants.ENCODER_GEAR_RATIO / Constants.ENCODER_PULSES_PER_REVOLATION;
+
   public DriveTrain() {
     talonLeft = new TalonSRX(Constants.MOTOR_PORTS_LEFT[0]);
     talonRight = new TalonSRX(Constants.MOTOR_PORTS_RIGHT[0]);
@@ -70,10 +66,10 @@ public class DriveTrain extends SubsystemBase {
   }
  
 public double getLeftDistance() {
-  return (talonLeft.getSelectedSensorPosition() - leftOffset) * distancePerPulse;
+  return (talonLeft.getSelectedSensorPosition()) * distancePerPulse;
 }
 public double getRightDistance() {
-  return (talonRight.getSelectedSensorPosition() - rightOffset) * distancePerPulse;
+  return (talonRight.getSelectedSensorPosition()) * distancePerPulse;
 }
 public double getDistance() {
   return (getRightDistance()+ getLeftDistance()) * 0.5;

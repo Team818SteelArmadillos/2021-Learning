@@ -41,6 +41,8 @@ public final class Constants {
     public static final double p = 0.0009;
     public static final double i = 0.00537;
     public static final double d = 0.00003657;
+
+    public static final double distancePerPulse = Math.PI * Constants.WHEEL_DIAMETER * Constants.ENCODER_GEAR_RATIO / Constants.ENCODER_PULSES_PER_REVOLATION;
  
 }
  
