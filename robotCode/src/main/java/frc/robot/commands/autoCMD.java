@@ -36,6 +36,11 @@ public class autoCMD extends CommandBase {
     rightSpeed = 0.3;
     
     driveSubsystem.SetMotors(leftSpeed, rightSpeed);
+
+    if(timer.get()>= 3){
+      leftSpeed = 0f;
+      rightSpeed = 0f;
+    }
   }
 
   // Called once the command ends or is interrupted.
