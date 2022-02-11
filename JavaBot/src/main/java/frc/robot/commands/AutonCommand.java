@@ -4,18 +4,20 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveSubsystem;
 
 public class AutonCommand extends CommandBase {
   
   private final DriveSubsystem m_subsystem;
-
+  private Timer m_timer;
   /** Creates a new AutonCommand. */
   public AutonCommand(DriveSubsystem subsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
 
-    this.m_subsystem = subsystem;
+    m_subsystem = subsystem;
+    m_timer = new Timer();
   }
 
   // Called when the command is initially scheduled.
@@ -23,6 +25,7 @@ public class AutonCommand extends CommandBase {
   public void initialize() 
   {
     m_subsystem.setBothMotors(0);
+    m_timer.start();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -43,6 +46,6 @@ public class AutonCommand extends CommandBase {
   @Override
   public boolean isFinished() 
   {
-    return false;
+    return m_timer.hasElapsed(3);
   }
 }
