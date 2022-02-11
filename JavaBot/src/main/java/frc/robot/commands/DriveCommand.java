@@ -9,7 +9,6 @@ public class DriveCommand extends CommandBase {
   
     private final DriveSubsystem m_subsystem;
     private final Input m_input = new Input();
-    private float m_speed = 0.0f;
 
     public DriveCommand(DriveSubsystem subsystem) {
       m_subsystem = subsystem;

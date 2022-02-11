@@ -8,7 +8,6 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
-import edu.wpi.first.wpilibj.motorcontrol.Talon;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -65,12 +64,6 @@ public class DriveSubsystem extends SubsystemBase {
     setLeftMotor(speed);
     setRightMotor(speed);
   }
-
-  public void moveRight()
-  {}
-
-  public void moveLeft()
-  {}
 
   @Override
   public void periodic() {
