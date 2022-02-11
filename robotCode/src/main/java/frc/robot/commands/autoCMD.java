@@ -4,19 +4,21 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.driveSubsystem;
 
-public class driveTrainCMD extends CommandBase {
+public class autoCMD extends CommandBase {
   /** Creates a new driveTrainCMD. */
   private double leftSpeed;
   private double rightSpeed;
   
-  Joystick leftJoystick = new Joystick(0);
-  Joystick rightJoystick = new Joystick(1);
-
-  public driveTrainCMD() {
+  public float leftInput;
+  public float rightInput;
+  
+  private Timer timer = new Timer();
+  
+  public autoCMD() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -24,24 +26,27 @@ public class driveTrainCMD extends CommandBase {
   @Override
   public void initialize() {
     driveSubsystem.SetMotors(0,0);
+    timer.start();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    leftSpeed = leftJoystick.getY();
-    rightSpeed = rightJoystick.getY();
+    leftSpeed = 0.3;
+    rightSpeed = 0.3;
     
     driveSubsystem.SetMotors(leftSpeed, rightSpeed);
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    timer.stop();
+  }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return timer.get()>=3;
   }
 }

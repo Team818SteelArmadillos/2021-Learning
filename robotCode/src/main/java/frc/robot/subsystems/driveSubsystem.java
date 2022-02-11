@@ -11,7 +11,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
-public class driveTrainSubsystem extends SubsystemBase {
+public class driveSubsystem extends SubsystemBase {
   /** Creates a new driveTrainSubsystem. */
   private static TalonSRX leftMotors = new TalonSRX(Constants.LEFT_MOTOR_PORT);
   private static TalonSRX rightMotors = new TalonSRX(Constants.RIGHT_MOTOR_PORT);
@@ -25,7 +25,7 @@ public class driveTrainSubsystem extends SubsystemBase {
     rightMotors1.set(ControlMode.PercentOutput,rightSpeed);
   }
 
-  public driveTrainSubsystem() {
+  public driveSubsystem() {
   }
 
   @Override
