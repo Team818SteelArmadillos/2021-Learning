@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.motorSpeed;
 import frc.robot.subsystems.motors;
 import frc.robot.subsystems.oi;
 
@@ -21,6 +22,8 @@ import frc.robot.subsystems.oi;
 public class Robot extends TimedRobot {
   public static motors motors = new motors();
   public static oi m_oi = new oi();
+
+  public static motorSpeed motorSpeed = new motorSpeed();
 
   private Command m_autonomousCommand;
 
@@ -81,16 +84,13 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.cancel();
-    }
+    motorSpeed.schedule();
   }
 
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    motors.SetLeftMotors(m_oi.getleftStickY());
-    motors.SetRightMotors(m_oi.getrightStickY());
+
   }
 
   @Override
