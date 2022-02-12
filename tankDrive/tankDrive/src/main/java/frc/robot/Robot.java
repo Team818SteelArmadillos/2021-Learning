@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.auton3Secs;
 import frc.robot.commands.motorSpeed;
 import frc.robot.subsystems.motors;
 import frc.robot.subsystems.oi;
@@ -22,8 +23,8 @@ import frc.robot.subsystems.oi;
 public class Robot extends TimedRobot {
   public static motors motors = new motors();
   public static oi m_oi = new oi();
-
   public static motorSpeed motorSpeed = new motorSpeed();
+  public static auton3Secs auton3Secs = new auton3Secs();
 
   private Command m_autonomousCommand;
 
@@ -68,10 +69,7 @@ public class Robot extends TimedRobot {
   public void autonomousInit() {
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
 
-    // schedule the autonomous command (example)
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.schedule();
-    }
+    auton3Secs.schedule();
   }
 
   /** This function is called periodically during autonomous. */
