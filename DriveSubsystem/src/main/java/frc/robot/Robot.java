@@ -7,7 +7,8 @@ package frc.robot;
   import edu.wpi.first.wpilibj2.command.CommandScheduler;
   import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
   import frc.robot.commands.TankDriveCommand;
-  import frc.robot.subsystems.OI;
+import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.OI;
 
 
  /** * The VM is configured to automatically run this class, and to call the functions corresponding to 
@@ -16,6 +17,8 @@ package frc.robot;
 * project. 
 */
 public class Robot extends TimedRobot { 
+
+public static Object driveSubsystem;
 
 /** * This function is run when the robot is first started up and should be used for any 
 * initialization code. 
@@ -70,7 +73,7 @@ public void autonomousInit() {}
 
 @Override 
 public void autonomousPeriodic() { 
-  SmartDashboard.putNumber("Velocity (ft.s)", driveTrain.getVelocity());
+  
 
 
 } 
