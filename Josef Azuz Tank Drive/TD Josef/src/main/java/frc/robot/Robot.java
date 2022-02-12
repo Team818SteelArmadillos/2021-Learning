@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.ScheduleCommand;
+import frc.robot.commands.AutonCommand;
 import frc.robot.commands.DriveTrainCommand;
 import frc.robot.subsystems.DriveTrain;
 
@@ -23,7 +24,8 @@ public class Robot extends TimedRobot {
   public static DriveTrain m_DriveTrain;
   public static DriveTrainCommand m_DriveTrainCommand;
   private RobotContainer m_robotContainer;
-
+  public static AutonCommand m_AutonCommand;
+  
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -35,6 +37,7 @@ public class Robot extends TimedRobot {
     m_robotContainer = new RobotContainer();
     m_DriveTrain = new DriveTrain();
     m_DriveTrainCommand = new DriveTrainCommand(); 
+    m_AutonCommand = new AutonCommand();
   }
 
   /**
@@ -73,7 +76,9 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during autonomous. */
   @Override
-  public void autonomousPeriodic() {}
+  public void autonomousPeriodic() {
+    CommandScheduler.getInstance().schedule(new AutonCommand());
+  }
 
   @Override
   public void teleopInit() {
