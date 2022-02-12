@@ -19,22 +19,22 @@ public TankDriveCommand() {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    driveTrain.setLeftMotors(0); 
-    driveTrain.setRightMotors(0);
+    driveSubsystem.setLeftMotors(0);
+    driveSubsystem.setRightMotors(0);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    driveTrain.setLeftMotors(m_oi.getJoystickLeftY()); 
-    driveTrain.setRightMotors(m_oi.getJoystickRightY());
+    driveSubsystem.setLeftMotors(m_oi.getJoystickLeftY()); 
+    driveSubsystem.setRightMotors(m_oi.getJoystickRightY());
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    driveTrain.setLeftMotors(0); 
-    driveTrain.setRightMotors(0);
+    driveSubsystem.setLeftMotors(0); 
+    driveSubsystem.setRightMotors(0);
   }
 
   // Returns true when the command should end.
