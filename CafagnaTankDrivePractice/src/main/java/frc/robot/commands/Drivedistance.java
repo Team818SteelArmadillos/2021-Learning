@@ -23,7 +23,7 @@ public class Drivedistance extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    Robot.driveTrain.setBothMotors(.3);
+    Robot.driveTrain.setBothMotors(0);
     timer.reset();
     timer.start();
     
@@ -32,7 +32,9 @@ public class Drivedistance extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    Robot.driveTrain.setBothMotors(0.5);
+  }
 
   // Called once the command ends or is interrupted.
   @Override

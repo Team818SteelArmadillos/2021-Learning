@@ -14,6 +14,7 @@ import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.OI;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.commands.Drivedistance;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.ShooterCommand;
  
@@ -30,6 +31,7 @@ public class Robot extends TimedRobot {
   public static IntakeCommand m_IntakeCommand;
   public static ShooterSubsystem m_ShooterSubsystem = new ShooterSubsystem();
   public static ShooterCommand m_ShooterCommand;
+  public static Drivedistance m_Drivedistancecommand;
  
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -85,15 +87,12 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
+    m_Drivedistancecommand.schedule();
   }
 
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
-
-    SmartDashboard.putNumber("Velocity (ft.s)", driveTrain.getVelocity());
-    SmartDashboard.putNumber("Distance Traveled (in)", driveTrain.getDistance());
-    SmartDashboard.putNumber("Left Distance Traveled (in)", driveTrain.getLeftDistance());
   }
  
   @Override
